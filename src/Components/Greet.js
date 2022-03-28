@@ -1,9 +1,12 @@
 import React from 'react'
 
 export default function Greet(props) {
-  return (
-    <div>Function Component<br/>
-    <h1>Hello this is from function component</h1>
+    console.log(props)  
+    return (
+      
+    <div>
+    <h1 >Hello this is {props.name} from function component</h1>
+      <p> {props.children}</p>
     </div>
   )
 }
