@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import React  from 'react';
 import './App.css';
 import Greet from './Components/Greet';
 import Welcome from './Components/Welcome';
+import Hello from './Components/Hello';
 
 function App() {
   
@@ -10,6 +10,7 @@ function App() {
     <div >
       <Welcome  />
      <Greet/>
+     <Hello/>
     </div>
   );
 }
