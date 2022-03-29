@@ -18,7 +18,7 @@ incrementCount(){
  //incrementing using prev state
  //add value using props
  this.setState((prevState,props)=>({
-     count:prevState.count+1
+     count:prevState.count+ props.addValue
  }))
  console.log('Asychronous value:',this.state.count)
 
