@@ -7,6 +7,7 @@ import Message from './Components/Message';
 import Counter from './Components/Counter';
 import EventBind from './Components/EventBind';
 import ParentComponent from './Components/ParentComponent';
+import ConditionalWelcome from './Components/ConditionalWelcome';
 
 function App() {
   
@@ -22,9 +23,14 @@ function App() {
        <Message/>
        {/* Props being passes to class component */}
        <Counter addValue='5'/>
-
+       
+       {/* Approaches of event binding */}
        <EventBind/>
+       {/* Passing parameters from child to parent and method from parent to child */}
        <ParentComponent/>
+
+       {/* Conditional Rendering */}
+       <ConditionalWelcome/>
        
     </div>
   );

@@ -22,7 +22,7 @@ import ChildComponent from './ChildComponent'
       <ChildComponent greetHandler={this.greetParent}/>
       </div>
     )
-  }
+  } 
 }
 
 export default ParentComponent
