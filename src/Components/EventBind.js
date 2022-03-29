@@ -26,7 +26,7 @@ import React, { Component } from 'react'
   render() {
     return (
       <div>
-      <h1>Event Binding Apporaches </h1>
+      <h1>4 Approaches of Event Binding  </h1>
       <h3> {this.state.message}</h3>
       {/* 1st approach this cause re render on every update */}
       <button onClick={this.clickHandler.bind(this)}> Click (1st approach)</button><br/>
