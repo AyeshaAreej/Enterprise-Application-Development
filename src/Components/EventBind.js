@@ -3,8 +3,7 @@ import React, { Component } from 'react'
  class EventBind extends Component {
     constructor(props) {
       super(props)
-    
-      this.state = {
+        this.state = {
         message:'Hello'
       }
     //   3rd Approach of binding
@@ -41,5 +40,4 @@ import React, { Component } from 'react'
     )
   }
 }
-
 export default EventBind

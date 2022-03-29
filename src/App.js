@@ -8,6 +8,7 @@ import Counter from './Components/Counter';
 import EventBind from './Components/EventBind';
 import ParentComponent from './Components/ParentComponent';
 import ConditionalWelcome from './Components/ConditionalWelcome';
+import NameList from './Components/NameList';
 
 function App() {
   
@@ -32,6 +33,8 @@ function App() {
        {/* Conditional Rendering */}
        <ConditionalWelcome/>
        
+       {/* List Rendering */}
+       <NameList/>
     </div>
   );
 }
