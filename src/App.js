@@ -6,6 +6,7 @@ import Hello from './Components/Hello';
 import Message from './Components/Message';
 import Counter from './Components/Counter';
 import EventBind from './Components/EventBind';
+import ParentComponent from './Components/ParentComponent';
 
 function App() {
   
@@ -23,6 +24,7 @@ function App() {
        <Counter addValue='5'/>
 
        <EventBind/>
+       <ParentComponent/>
        
     </div>
   );
