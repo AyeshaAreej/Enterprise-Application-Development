@@ -9,6 +9,7 @@ import EventBind from './Components/EventBind';
 import ParentComponent from './Components/ParentComponent';
 import ConditionalWelcome from './Components/ConditionalWelcome';
 import NameList from './Components/NameList';
+import LifeCycleA from './Components/LifeCycleA';
 
 function App() {
   
@@ -35,7 +36,10 @@ function App() {
        
        {/* List Rendering */}
        <NameList/>
-    </div>
+
+       {/* Mounting Lifecycle Methods */}
+        <LifeCycleA/>
+     </div>
   );
 }
 
