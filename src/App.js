@@ -12,6 +12,7 @@ import NameList from './Components/NameList';
 import LifeCycleA from './Components/LifeCycleA';
 import RefsDemo from './RefsDemo';
 import FocusInput from './Components/FocusInput';
+import FRParent from './Components/FRParent';
 
 function App() {
   
@@ -43,10 +44,13 @@ function App() {
         <LifeCycleA/>
 
         {/* Refs Demo */}
-        <RefsDemo/>
+        {/* <RefsDemo/> */}
 
         {/* Ref to class component */}
         <FocusInput/>
+
+        {/* Forwarding ref method direct ref to input element of child component */}
+        <FRParent/>
      </div>
   );
 }

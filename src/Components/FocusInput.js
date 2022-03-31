@@ -14,6 +14,7 @@ import Input from './Input'
   render() {
     return (
       <div>FocusInput
+      <h1>Ref to class component</h1>
       <Input ref={this.componentRef}/>
       <button onClick={this.clickHandler}> Focus Input</button>
       </div>
