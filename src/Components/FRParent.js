@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import FRInput from './FRInput'
 
-export default class FRParent extends Component {
+  class FRParent extends Component {
     constructor(props) {
       super(props)
     //step 1
@@ -21,3 +21,5 @@ export default class FRParent extends Component {
     )
   }
 }
+ 
+export default FRParent
