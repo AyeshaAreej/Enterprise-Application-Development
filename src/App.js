@@ -10,6 +10,8 @@ import ParentComponent from './Components/ParentComponent';
 import ConditionalWelcome from './Components/ConditionalWelcome';
 import NameList from './Components/NameList';
 import LifeCycleA from './Components/LifeCycleA';
+import RefsDemo from './RefsDemo';
+import FocusInput from './Components/FocusInput';
 
 function App() {
   
@@ -39,6 +41,12 @@ function App() {
 
        {/* Mounting Lifecycle Methods */}
         <LifeCycleA/>
+
+        {/* Refs Demo */}
+        <RefsDemo/>
+
+        {/* Ref to class component */}
+        <FocusInput/>
      </div>
   );
 }
