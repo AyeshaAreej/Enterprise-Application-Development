@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import ComponentF from './ComponentsF'
 
@@ -13,4 +14,3 @@ export class ComponentE extends Component {
   }
 }
 
-export default ComponentE
