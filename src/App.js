@@ -1,12 +1,10 @@
 import './App.css';
-
+import stateWithObject from './components/stateWithObject';
 
 function App() {
-  return (
-    <div className="App">
-   
-    </div>
-  );
+  return    <stateWithObject/>
+    
+  
 }
 
 export default App;
