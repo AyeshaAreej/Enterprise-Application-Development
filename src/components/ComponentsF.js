@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
-import {UserConsumer} from './UserContext'
+import {UserConsumer, UserContext} from '../App'
 
 export class ComponentF extends Component {
   render() {
     return (
-      <UserConsumer>
-        {value=>{
-          return <h1>{value}</h1>
+      <div>
+      {/* 3rd step consuming values */}
+      <UserContext.Consumer>
+        {user=>{
+          return <h1>{user}</h1>
         }
 
         }
-      </UserConsumer>
+      </UserContext.Consumer>
      
-      
+      </div> 
     )
   }
 }

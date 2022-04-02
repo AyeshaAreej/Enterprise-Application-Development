@@ -1,19 +1,20 @@
 import './App.css';
-import ComponentC from './components/ComponentC';
-import { UserProvider } from './components/UserContext';
-import React, { Component } from 'react'
+import React from 'react';
+import ComponentC from './components/ComponentC'
 
-export class App extends Component {
-  render() {
-    return (
-      <div>
 
-        <UserProvider value="Ayesha">
-          <ComponentC/>
-        </UserProvider>
+
+// step 1 create conytext
+export const UserContext= React.createContext()
+function App() {
+  return (
+    <div>
+      {/* 2nd step we need to provide it  value and provide must wrap the child components  */}
+      <UserContext.Provider value={'ayesha'}>
+      <ComponentC/>
+      </UserContext.Provider>
       </div>
-    )
-  }
+  );
 }
 
-export default App
+export default App;
