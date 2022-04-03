@@ -1,6 +1,5 @@
 import './App.css';
-import ComponentC from './components/ComponentC';
-import { UserProvider } from './components/UserContext';
+
 import React, { Component } from 'react'
 
 export class App extends Component {
@@ -8,9 +7,8 @@ export class App extends Component {
     return (
       <div>
 
-        <UserProvider value="Ayesha">
-          <ComponentC/>
-        </UserProvider>
+        <h1>hello</h1>
+       
       </div>
     )
   }
