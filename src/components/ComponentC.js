@@ -5,8 +5,8 @@ export class ComponentC extends Component {
   render() {
     return (
       <div>
-<h1>in c</h1>
-      
+    <h1>in c</h1>
+      <ComponentE/>
       </div>
 
     )

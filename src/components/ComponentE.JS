@@ -8,7 +8,7 @@ export class ComponentE extends Component {
   render() {
     return (
       <div><h1>In E</h1>
-      {/* <ComponentF/> */}
+      <ComponentF/>
       </div>
     )
   }
