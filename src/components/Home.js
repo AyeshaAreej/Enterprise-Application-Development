@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-
+ 
 function Home() {
   const navigate=useNavigate()
 
@@ -11,7 +11,7 @@ function Home() {
   // }
   return (
     <div>Home
-    <button onClick={()=>navigate('order-summary')}>Place Order</button>
+    <button onClick={()=>navigate('order-summary', {replace:true})}>Place Order</button>
     </div>
   )
 }
