@@ -10,7 +10,7 @@ export class App extends Component {
       <div>
         
        <h1>hello</h1>
-       <img src={cat} alt="Logo" className='gray' />
+      
 
 
 
