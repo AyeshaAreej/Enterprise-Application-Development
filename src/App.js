@@ -1,16 +1,18 @@
 import './App.css';
-import cat from './cat.png'
 import React, { Component } from 'react'
+
+
 
 export class App extends Component {
 
   render() {
-    console.log(cat);
+    console.log('hell0')
+   
     return (
       <div>
         
-       <h1>hello</h1>
-       <img src={cat} alt="Logo" className='gray' />
+       <h1>hello WORLD</h1>
+      
 
 
 
