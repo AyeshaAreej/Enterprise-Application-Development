@@ -2,10 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const Product= require('./Product') 
-const session= require('express-session');
+// const session= require('express-session');
 const mongoose= require('mongoose');
 const User=require('./models/users');
 const multer=require('multer');
+const fs=require('fs');
 
 //mongoose
 const app=express();
@@ -72,6 +73,77 @@ app.get("/", (req,res)=>{
         }
     });
 });
+
+//edit an user
+app.get('/edit/:id', (req,res)=>{
+    //getting id from url
+    let id=req.params.id;
+    User.findById(id,(err,user)=>{
+     if(err){
+         res.redirect('/');
+     }
+     else{
+         if(user==null){
+             res.redirect('/');
+         }
+         else{
+             res.render('edit_users',{
+                 user:user,
+             });
+         }
+     }
+    });
+});
+
+//update user route
+app.post('/update/:id', upload,(req,res)=>{
+let id=req.params.id;
+let new_image='';
+if(req.file){
+    new_image=req.file.filename;
+    try {
+        fs.unlinkSync('./uploads/' +req.body.old_image);
+    } catch(err){
+        console.log(err)
+    }
+} else {
+    new_image=req.body.old_image;
+}
+
+User.findByIdAndUpdate(id,{
+    name:req.body.name,
+    email:req.body.email,
+    phone:req.body.phone,
+    image:new_image,
+},(err, res)=>{
+    if(err){
+        res.json({message:err.message});
+    }else{
+       console.log("Record deleted successfully")
+    };
+    res.redirect("/");
+})
+});
+
+//delete user route
+app.get('/delete/:id',(req,res)=>{
+    let id=req.params.id;
+    User.findByIdAndRemove(id, (err,result)=>{
+        if(result.image != ''){
+            try{
+        fs.unlinkSync('./uploads/'+result.image);
+ } catch(err){
+     console.log(err);
+ }
+}
+if(err){
+    res.json({message:err.message});
+}else{
+   console.log("Record deleted successfully")
+};
+res.redirect("/");
+    })
+})
 
 //middleware
 app.use(express.urlencoded({extended:false}))
