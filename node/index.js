@@ -4,6 +4,8 @@ const path = require('path');
 const Product= require('./Product') 
 const session= require('express-session');
 const mongoose= require('mongoose');
+const User=require('./models/users');
+const multer=require('multer');
 
 //mongoose
 const app=express();
@@ -19,6 +21,57 @@ db.on('error', (error)=> console.log(error));
 db.once('open' , ()=> console.log('Connected to database!'));
  
 
+
+
+
+
+
+//image upload
+var storage=multer.diskStorage({
+    destination: function(req,file, cb){
+        cb(null,'./uploads');
+    },
+    filename: function(req, file,cb){
+     cb(null, file.fieldname+"_"+Date.now()+"_"+ file.originalname);  
+    },
+});
+
+var upload =multer ({
+    storage:storage,
+}).single('image');
+
+//insert an user into database
+app.post('/add', upload,(req, res)=>{
+const user=new User({
+    name:req.body.name,
+    email:req.body.email,
+    phone:req.body.phone,
+    image:req.file.filename,
+    
+});
+user.save((err)=>{
+    if(err){
+        res.json({message:err.message, type:'danger'})
+    }
+    else{
+       console.log('user added successfully')
+    };
+    res.redirect('/');
+})
+})
+
+//Get all users route
+app.get("/", (req,res)=>{
+    User.find().exec((err,users)=>{
+        if(err){
+            res.json({message:err.message});
+        }else{
+            res.render("home",{
+                users:users,
+            });
+        }
+    });
+});
 
 //middleware
 app.use(express.urlencoded({extended:false}))
@@ -46,8 +99,9 @@ app.set('view engine', 'ejs');
 
 
 //adding public folder
-app.use(express.static('public/css/'))
-
+app.use(express.static('public/css/'));
+//adding uploads folder
+app.use(express.static('uploads'));
 
 app.get('/', (req, res) => {
     res.render('home', { name: 'Ayesha Areej'})
@@ -63,7 +117,7 @@ app.use('/products', (req,res)=>{
     const products=['A','B','C','D','E','F']
     res.render('products', { name: 'Ayesha Areej', products })
 })
-app.get('/add', (req,res)=>{
+app.use('/add', (req,res)=>{
     res.render('add_users', {title: 'Add User' })
 })
 
@@ -89,6 +143,8 @@ app.post("/product/create", function(req, res) {
 });
 
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("APP IS LISTENING ON PORT 3000!")
 })
+
+//DB_URI= mongodb://localhost:27017/node_crud
