@@ -2,11 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const Product= require('./Product') 
+const Credentials=require('./models/credentials');
 // const session= require('express-session');
 const mongoose= require('mongoose');
 const User=require('./models/users');
 const multer=require('multer');
+const fileUpload = require("express-fileupload");
 const fs=require('fs');
+
+const userController = require("./controllers/userController");
 
 //mongoose
 const app=express();
@@ -151,19 +155,6 @@ app.use(express.json());
 
 
 
-// app.use(
-//     session({
-//     Secret:"my secret key ",
-//     saveUninitialized:true,
-//     resave:false,
-
-// }));
-
-// app.use((req,res,next)=>{
-//     res.locals.message= req.session.message;
-//     delete req.session.message;
-//     next();
-// })
 
 // Setting EJS as template engine
 app.set('views', path.join(__dirname, 'views'));
@@ -174,10 +165,31 @@ app.set('view engine', 'ejs');
 app.use(express.static('public/css/'));
 //adding uploads folder
 app.use(express.static('uploads'));
+//adding images folder
+app.use("/images", express.static("public/img"));
 
 app.get('/', (req, res) => {
     res.render('home', { name: 'Ayesha Areej'})
 })
+
+//signup 
+app.use(fileUpload());
+app.use("/signup", userController.create);
+app.post("/user/create", userController.signup);
+
+
+//login
+app.use("/login", userController.login);
+app.post('/user/validate', (req, res) => {
+    // Insert Login Code Here
+    let username = req.body.username;
+    let password = req.body.password;
+    console.log(`Username: ${username} Password: ${password}`);
+    res.redirect('/');
+    // res.send(`Username: ${username} Password: ${password}`);
+  });
+
+
 
 
 app.use('/about', (req,res)=>{
