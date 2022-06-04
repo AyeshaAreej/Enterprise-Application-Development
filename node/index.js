@@ -123,7 +123,7 @@ User.findByIdAndUpdate(id,{
     if(err){
         res.json({message:err.message});
     }else{
-       console.log("Record deleted successfully")
+       console.log("Record updated successfully")
     };
     res.redirect("/");
 })
